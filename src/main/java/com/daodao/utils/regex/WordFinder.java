@@ -23,6 +23,7 @@ public class WordFinder {
         System.out.println(findWordInGroup(url2, pattern));
         System.out.println(findWordInGroup(url3, pattern));
         System.out.println(findWordInGroup(url4, pattern));
+
      }
 
     public static String findWordInGroup(String sentence, String pattern) {
