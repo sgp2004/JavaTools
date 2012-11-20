@@ -13,3 +13,4 @@ wbobject.hbase.zookeeper.property.clientPort=2181
 
 4 run test
 HbaseTest
+
