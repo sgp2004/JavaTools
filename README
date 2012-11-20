@@ -1,0 +1,15 @@
+1 create table in hbase
+  create 't1', 'f1'
+
+2 make a proerty file
+/data1/confs/hbase.properties
+wbobject.hbase.poolSize=25
+wbobject.hbase.zookeeper.quorum=75-25-169-yf-core.jpool.sinaimg.cn,75-25-170-yf-core.jpool.sinaimg.cn,75-25-171-yf-core.jpool.sinaimg.cn
+wbobject.zookeeper.session.timeout=6000
+wbobject.hbase.rpc.timeout=3000
+wbobject.hbase.zookeeper.property.clientPort=2181
+
+3 lib 依赖包在 target/DaodaoToolsBox-1.0/WEB-INF/lib/
+
+4 run test
+HbaseTest

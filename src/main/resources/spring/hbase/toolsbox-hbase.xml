@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    <!-- load properties from local file in /data1/confs-->
+    <import resource="classpath:spring/configloader.xml"/>
+
+    <!-- =========== hbase =========== -->
+    <bean id="commonHbaseDao" class="com.daodao.hbase.CommonHbaseDaoImpl">
+        <property name="hbhelper" ref="toolsboxCustomHBase"></property>
+        <property name="tableName" value="t1"/>
+    </bean>
+    <bean id="toolsboxCustomHBase" class="com.weibo.api.commons.hbase.CustomHBase">
+        <constructor-arg index="0" value="${wbobject.hbase.poolSize}"/>
+        <constructor-arg index="1" ref="toolsboxHBaseConfMap"/>
+    </bean>
+    <bean id="toolsboxHBaseConfMap" class="java.util.HashMap">
+        <constructor-arg>
+            <map>
+                <entry key="hbase.zookeeper.quorum" value="${wbobject.hbase.zookeeper.quorum}"/>
+                <entry key="hbase.rpc.timeout" value="${wbobject.hbase.rpc.timeout}"/>
+                <entry key="zookeeper.session.timeout" value="${wbobject.zookeeper.session.timeout}"/>
+                <entry key="hbase.zookeeper.property.clientPort" value="${wbobject.hbase.zookeeper.property.clientPort}"/>
+            </map>
+        </constructor-arg>
+    </bean>
+    </beans>
