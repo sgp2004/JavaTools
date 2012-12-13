@@ -14,6 +14,14 @@
         <property name="hbhelper" ref="toolsboxCustomHBase"></property>
         <property name="tableName" value="t1"/>
     </bean>
+    <!--<bean id="commonHbaseDao" class="com.daodao.hbase.CommonHbaseDaoImpl">-->
+        <!--<property name="hbhelper" ref="toolsboxCustomHBase"></property>-->
+        <!--<property name="tableName" value="weibo_obj"/>-->
+    <!--</bean>-->
+    <!--<bean id="objectIdIndexHbaseDao" class="com.daodao.hbase.CommonHbaseDaoImpl">-->
+        <!--<property name="hbhelper" ref="toolsboxCustomHBase"></property>-->
+        <!--<property name="tableName" value="weibo_obj_uuid"/>-->
+    <!--</bean>-->
     <bean id="toolsboxCustomHBase" class="com.weibo.api.commons.hbase.CustomHBase">
         <constructor-arg index="0" value="${wbobject.hbase.poolSize}"/>
         <constructor-arg index="1" ref="toolsboxHBaseConfMap"/>
@@ -25,6 +33,7 @@
                 <entry key="hbase.rpc.timeout" value="${wbobject.hbase.rpc.timeout}"/>
                 <entry key="zookeeper.session.timeout" value="${wbobject.zookeeper.session.timeout}"/>
                 <entry key="hbase.zookeeper.property.clientPort" value="${wbobject.hbase.zookeeper.property.clientPort}"/>
+                <entry key="hbase.client.scanner.caching" value="${activity.hbase.client.scanner.caching}" />
             </map>
         </constructor-arg>
     </bean>

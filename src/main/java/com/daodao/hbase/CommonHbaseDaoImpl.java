@@ -4,6 +4,9 @@ import com.weibo.api.commons.hbase.CustomHBase;
 import org.apache.hadoop.hbase.KeyValue;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.filter.FilterList;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -230,6 +233,28 @@ public class CommonHbaseDaoImpl implements ICommonDao {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public ResultScanner scan(String startRow, String stopRow, FilterList filterList) {
+        try {
+            ResultScanner resultScanner = hbhelper.scan(tableName, Bytes.toBytes(startRow), Bytes.toBytes(stopRow), filterList);
+            return resultScanner;
+        } catch (Exception e) {
+             log.error("[hbase_error]", e);
+            return null;
+        }
+    }
+
+    @Override
+    public ResultScanner scan (Scan scan){
+        try {
+            ResultScanner resultScanner = hbhelper.scan(tableName, scan);
+            return resultScanner;
+        } catch (Exception e) {
+            log.error("[hbase_error]", e);
+            return null;
+        }
     }
 
 }

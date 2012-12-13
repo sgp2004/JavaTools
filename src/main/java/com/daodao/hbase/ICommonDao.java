@@ -1,5 +1,9 @@
 package com.daodao.hbase;
 
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.filter.FilterList;
+
 import java.util.List;
 import java.util.Map;
 
@@ -40,4 +44,8 @@ public interface ICommonDao {
     public List<String> getRows(String rowLike);
 
     public List<String> getColumns(String rowkey, String columnFamily);
+
+    ResultScanner scan(String startRow, String stopRow, FilterList filterList);
+
+    ResultScanner scan (Scan scan);
 }
