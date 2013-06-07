@@ -44,13 +44,13 @@ public class InterruptedTest extends ObjectTestBase{
                     long  time = System.currentTimeMillis();
                     int loop=0;
                     while (loop++<1000)
-                        //commonDao.insert("test1","f1","key","value"+ finalI);         //for one same key test1   1000 loop，100 threads cost 53s   ;if increase to 10000 loop cost 530s and may be timeout
-                        //commonDao.insert("test1"+finalI+loop,"f1","key","value"+ finalI); // for different key  1000 loop，100 threads cost 14s，10000loop cost 113s
+//                        commonDao.insert("test1","f1","key","value"+ finalI);         //for one same key test1   1000 loop，100 threads cost 53s   ;if increase to 10000 loop cost 530s and may be timeout
+                       commonDao.insert("test1"+finalI+loop,"f1","key","value"+ finalI); // for different key  1000 loop，100 threads cost 14s，10000loop cost 113s
                         //commonDao.delete("test1");         //for one same key test1   1000 loop，100 threads cost 53s
-                        //commonDao.delete("test1"+finalI+loop); // for different key  1000 loop，100 threads cost 13s
-                        //commonDao.incr("test2","f1","key",1l);  // for  one same key test2  1000 loop，100 threads cost 59s
-                       // commonDao.incr("test2"+finalI+loop,"f1","key",1l);  // for different key  1000 loop，100 threads cost 15s
-                        commonDao.getStrValue("test1","f1","key");  // for  one same key test1  100 loop，100 threads cost 59s ??? why is it so slow?
+                       // commonDao.delete("test1"+finalI+loop); // for different key  1000 loop，100 threads cost 13s
+                        //commonDao.incr("test3","f1","key",1l);  // for  one same key test2  1000 loop，100 threads cost 59s
+                      // commonDao.incr("test3"+finalI+loop,"f1","key",1l);  // for different key  1000 loop，100 threads cost 15s
+                   //  commonDao.getStrValue("test1","f1","key");  // for  one same key test1  100 loop，100 threads cost 59s ??? why is it so slow?
                        // commonDao.getStrValue("test1"+finalI+loop,"f1","key");  // for different key  1000 loop，100 threads cost 12s
                     System.out.println(finalI+"thread stop,use time:"+(System.currentTimeMillis()-time));
                 }

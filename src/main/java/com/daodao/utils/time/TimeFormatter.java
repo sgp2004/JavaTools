@@ -14,8 +14,10 @@ import java.util.Locale;
  *         To change this template use File | Settings | File Templates.
  */
 public class TimeFormatter {
+    private static SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.US);
+    private static SimpleDateFormat sdf_log = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
     public static Date parseStandUsDateFromString(String date){
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.US);
+
         Date result = null;
         try {
             result = sdf.parse(date);
@@ -24,8 +26,13 @@ public class TimeFormatter {
         }
         return result;
     }
+
+    public static String formatLogDateFromDate(Date date){
+        return  sdf_log.format(date);
+    }
     public static void main(String[] args) throws InterruptedException {
         System.out.println(parseStandUsDateFromString(new Date().toString()));
+        System.out.println(formatLogDateFromDate(new Date()));
         System.out.println(parseStandUsDateFromString(""));
         long[] ids = new long[2];
         System.out.println(ids[1]);

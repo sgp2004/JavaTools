@@ -9,7 +9,9 @@
     <version>1.0</version>
     <packaging>jar</packaging>
     <properties><spring.version>3.0.6.RELEASE</spring.version></properties>
+
     <dependencies>
+
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-core</artifactId>
@@ -95,6 +97,11 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20090211</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>1.4.0</version>
         </dependency>
     </dependencies>
 </project>

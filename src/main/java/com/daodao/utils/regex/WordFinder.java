@@ -23,6 +23,12 @@ public class WordFinder {
         System.out.println(findWordInGroup(url2, pattern));
         System.out.println(findWordInGroup(url3, pattern));
         System.out.println(findWordInGroup(url4, pattern));
+        pattern = "http://10.209.134.40:8080/foo";
+        url3 = "http://10.209.134.40:8080/foo?id=";
+        System.out.println("test:"+findMatches(url3,pattern));
+        String ipPattern = "(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})";
+//        String ipPattern = "/(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})";
+        System.out.println("ip:"+findWordInGroup("19.210.226.128 good by",ipPattern));
      }
 
     public static String findWordInGroup(String sentence, String pattern) {
@@ -31,5 +37,13 @@ public class WordFinder {
         if(m.find() && m.groupCount()>0)
             return m.group(1);
         return "";
+    }
+
+    public static String findMatches(String sentence, String pattern) {
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(sentence);
+        if(m.find())
+            return m.group();
+        return "--";
     }
 }
